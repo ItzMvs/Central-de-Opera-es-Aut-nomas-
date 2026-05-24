@@ -32,19 +32,21 @@ typedef struct Equipamento{
     char categoria[40];
     char setor_maquina[4];
     char Estado[20];
-    Opr setor_operador;
+    int id_operador_responsavel;
     char Nivel_prioridade;
 
 
 }Equip;
 
 void Registrar_Operador(Opr operadores[], int n){
+
     int ID;
     char nome[70];
     int setor;
     int nivel;
     int status;
     int operacoes;
+    int x;
 
     // REGISTRAR ID DO OPERADOR:
 
@@ -53,7 +55,8 @@ void Registrar_Operador(Opr operadores[], int n){
     for (int i=0; i<n; i++){
       printf("\nInforme o ID do operador %d(4 digitos): ", i);
       scanf("%d",&ID);
-      if (Check_ID_Op == 4)
+      x = Check_ID_Op(ID);
+      if (x == 4)
       {
           operadores[i].ID_operador = ID;
       }
@@ -99,7 +102,7 @@ void Registrar_Operador(Opr operadores[], int n){
             printf("3.Setor VX30-(Conserto)\n");
             printf("4.Setor VX31-(Entrega)\n");
             printf("5.Setor VX32-(Revisao geral)\n");
-            printf("6.Encerrar selecao\n")
+            printf("6.Encerrar selecao\n");
             printf("----------------------------");
             printf("\n");
             printf("Seleciona um dos setores acima (1-5): \n");
@@ -148,13 +151,13 @@ do
     scanf("%d",nivel);
     switch(nivel){
     case 1:
-        strcpy(operadores[i].nivel, "Basico");
+        strcpy(operadores[j].nivel, "Basico");
         break;
     case 2:
-        strcpy(operadores[i].nivel, "Intermediario");
+        strcpy(operadores[j].nivel, "Intermediario");
         break;
     case 3:
-        strcpy(operadores[i].nivel, "Supervisor tecnico");
+        strcpy(operadores[j].nivel, "Supervisor tecnico");
         break;
     case 4:
         printf("Encerrando selecao...\n");
@@ -206,15 +209,15 @@ do
 
     }
 
-}while (while nivel>6 || nivel<1);
+}while (nivel>6 || nivel<1);
 
 
 //CONTADOR DE OPERACOES FEITAS
 
 
 for (int h =0; h <n; h++){
-    printf("\nQuantas operacoes o operador %d ja fez?: \n", i);
-    scanf("%d", &operadores[i].operacoes);
+    printf("\nQuantas operacoes o operador %d ja fez?: \n", h);
+    scanf("%d", &operadores[h].Operacoes_feitas);
 }
 
 }
@@ -236,16 +239,17 @@ void Registrar_Maquinas(Equip maquinas[], int n){
         fgets(ID_maquina,3, stdin);
          ID_maquina[strcspn(ID_maquina, "\n")] = "\0";
       while ((getchar()) != '\n' && getchar() != EOF);
-        if (check_ID_maquina(ID_maquina))
+        if (check_ID_maquina(ID_maquina)==1)
+        {
             printf("ID válido!\n");
-            maquinas[i].ID_maquina = ID_maquina;
+            strcpy(maquinas[i].ID_maquina, ID_maquina);
         }
         else{
             printf("ID invalido! tente novamente no formato de 1 letra e 2 digitos.\n");
         }
 
-
-    }while(check_ID_maquina(ID_maquina) != true);
+        }
+    }while(check_ID_maquina(ID_maquina) != 1);
 
     //REGISTRAR TIPO DA MAQUINA:
 
@@ -260,7 +264,7 @@ void Registrar_Maquinas(Equip maquinas[], int n){
         printf("4.Esteira\n");
         printf("5.Braco mecanico\n");
         printf("6.Encerrar selecao\n");
-        printf("-------------------------------------------")
+        printf("-------------------------------------------");
         printf("\nSelecione sua opcao: \n");
         scanf("%d", tipo_maquina);
         switch(tipo_maquina){
@@ -301,26 +305,26 @@ void Registrar_Maquinas(Equip maquinas[], int n){
             printf("3.Setor VX30-(Conserto)\n");
             printf("4.Setor VX31-(Entrega)\n");
             printf("5.Setor VX32-(Revisao geral)\n");
-            printf("6.Encerrar selecao\n")
+            printf("6.Encerrar selecao\n");
             printf("----------------------------");
             printf("\n");
             printf("Seleciona um dos setores acima (1-5): \n");
             scanf("%d", &setor);
             switch(setor){
             case 1:
-                strcpy(operadores[i].setor_operador, "VX28");
+                strcpy(maquinas[i].setor_maquina, "VX28");
                 break;
             case 2:
-                strcpy(operadores[i].setor_operador, "VX29");
+                strcpy(maquinas[i].setor_maquina, "VX29");
                 break;
             case 3:
-                strcpy(operadores[i].setor_operador, "VX30");
+                strcpy(maquinas[i].setor_maquina, "VX30");
                 break;
             case 4:
-                strcpy(operadores[i].setor_operador, "VX31");
+                strcpy(maquinas[i].setor_maquina, "VX31");
                 break;
             case 5:
-                strcpy(operadores[i].setor_operador, "VX32");
+                strcpy(maquinas[i].setor_maquina, "VX32");
                 break;
             case 6:
                 printf("Encerrando seleção...\n");
@@ -337,9 +341,10 @@ void Registrar_Maquinas(Equip maquinas[], int n){
 
 
 // REGISTRAR ESTADO OPERACIONAL:
-
+int nivel;
     do
 {
+
     for(int j = 0; j<n; j++){
     printf("\n--- TABELA DE ESTADOS OPERACIONAIS ---\n");
     printf("1. Ativo\n");
@@ -350,13 +355,13 @@ void Registrar_Maquinas(Equip maquinas[], int n){
     scanf("%d",nivel);
     switch(nivel){
     case 1:
-        strcpy(maquinas[i].Estado, "Ativo");
+        strcpy(maquinas[j].Estado, "Ativo");
         break;
     case 2:
-        strcpy(maquinas[i].Estado, "Inativo");
+        strcpy(maquinas[j].Estado, "Inativo");
         break;
     case 3:
-        strcpy(maquinas[i].Estado, "Manutencao");
+        strcpy(maquinas[j].Estado, "Manutencao");
         break;
     case 4:
         printf("Encerrando selecao...\n");
@@ -369,15 +374,18 @@ void Registrar_Maquinas(Equip maquinas[], int n){
 
 
 //REGISTRAR O ID DO OPERADOR DESSE EQUIPAMENTO:
-
+int ID;
+int y;
  do
     {
     for (int i=0; i<n; i++){
-      printf("\nInforme o ID do operador dessa maquina (4 digitos): ", );
+      printf("\nInforme o ID do operador dessa maquina (4 digitos): " );
       scanf("%d",&ID);
-      if (Check_ID_Op == 4)
+      y = Check_ID_Op(ID);
+
+      if (y == 4)
       {
-          maquinas[i].setor_operador = ID;
+          maquinas[i].id_operador_responsavel = ID;
       }
       else
       {
@@ -385,7 +393,7 @@ void Registrar_Maquinas(Equip maquinas[], int n){
       }
 
     }
-    }while(Check_ID_Op(ID)!= 4);
+    }while(y!= 4);
 
 
 //REGISTRAR O NIVEL DE PRIORIDADE DESSA MAQUINA
@@ -401,7 +409,7 @@ do
         printf("4.Esteira (BAIXA)\n");
         printf("5.Braco mecanico(MEDIA)\n");
         printf("6.Encerrar selecao\n");
-        printf("-------------------------------------------")
+        printf("-------------------------------------------");
         printf("\nSelecione sua opcao: \n");
         scanf("%d", tipo_maquina);
         switch(tipo_maquina){
@@ -436,17 +444,19 @@ do
 
 // Checa o ID do operador pra ver se tem 4 digitos:
 
-void Check_ID_Op(int num){
+int Check_ID_Op(int num){
+
     if (num < 10){
-        return 1
+        return 1;
     }
     return 1+ Check_ID_Op(num/10);
 }
+
 // checa se o ID da maquina corresponde com o formato devido:
 
-void check_ID_maquina(char *y){
+void check_ID_maquina(char id[]){
 
-    if (strlen()!= 3)
+    if (strlen(id)!= 3)
     {
         return 0;
     }
@@ -456,9 +466,9 @@ void check_ID_maquina(char *y){
 
 }
 
-
 int main()
 {
+    int n1, n2, n3, n4, n5, n6, n7;
     Opr operadores[40];
     Equip maquinas[40];
     int opt;
@@ -480,18 +490,17 @@ int main()
         scanf("%d", &opt);
         switch(opt){
         case 1:
-            int n1;
+
             printf("\nQuantos Operadores voce deseja cadastrar?(1-40): \n");
-            scanf("%d", &num);
-            //chamar a funcao de cadastro aqui.
+            scanf("%d", &n1);
+            Registrar_Operador(operadores, n1);
             break;
         case 2:
-            int n2;
+
             printf("\nQuantos equipamentos voce deseja registrar?(1-40): \n");
             scanf("%d", &n2);
-            //chamar a funcao de registrar maquinas aqui.
+            Registrar_Maquinas(maquinas, n2);
             break;
-
         }
 
     }while(opt >3 || opt<1);
