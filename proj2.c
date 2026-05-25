@@ -466,6 +466,128 @@ void check_ID_maquina(char id[]){
 
 }
 
+// listar todos operadores por nome,id,setor,nivel,status e operacoes feitas
+void listar_opr_todos(Opr A[]){
+    for(int i=1;i<51;i++)
+    {
+        printf("=======\n");
+        printf("Nome:%c\n",A[i].nome);
+        printf("Id:%d\n",A[i].ID_operador);
+        printf("Setor:%c\n",A[i].setor_operador);
+        printf("Nivel:%c\n",A[i].nivel);
+        printf("Status:%c\n",A[i].status);
+        printf("Operacoes feitas:%d\n",A[i].Operacoes_feitas);
+        printf("=======\n");
+
+    }
+}
+// listar operadores,id,nome e status por setor (Rever isso com o Grupo)
+void listar_opr_setor(Opr A[]){
+        printf("Setor: VX28\n");
+        for(int i=1;i<51;i++){
+        if (A[i].setor_operador=="VX28\n")
+        {
+        printf("Nome:%c\n",A[i].nome);
+        printf("Id:%d\n",A[i].ID_operador);
+        printf("Status:%c\n",A[i].status);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: VX29\n");
+        for(int i=1;i<51;i++){
+        if (A[i].setor_operador=="VX29\n")
+        {
+        printf("Nome:%c\n",A[i].nome);
+        printf("Id:%d\n",A[i].ID_operador);
+        printf("Status:%c\n",A[i].status);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: VX30\n");
+        for(int i=1;i<51;i++){
+        if (A[i].setor_operador=="VX30\n")
+        {
+        printf("Nome:%c\n",A[i].nome);
+        printf("Id:%d\n",A[i].ID_operador);
+        printf("Status:%c\n",A[i].status);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: VX31\n");
+        for(int i=1;i<51;i++){
+        if (A[i].setor_operador=="VX31\n")
+        {
+        printf("Nome:%c\n",A[i].nome);
+        printf("Id:%d\n",A[i].ID_operador);
+        printf("Status:%c\n",A[i].status);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: VX32\n");
+        for(int i=1;i<51;i++){
+        if (A[i].setor_operador=="VX32\n")
+        {
+        printf("Nome:%c\n",A[i].nome);
+        printf("Id:%d\n",A[i].ID_operador);
+        printf("Status:%c\n",A[i].status);
+        }
+        }
+        printf("=======\n");
+}
+//listar equipamento,id,tipo e estado por setor
+void listar_maq_setor(Equip A[]){
+        printf("Setor: Drone\n");
+        for(int i=1;i<151;i++){
+        if (A[i].setor_maquina=="Drone\n")
+        {
+        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Tipo:%d\n",A[i].categoria);
+        printf("Estado operacional:%c\n",A[i].Estado);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: Scanner\n");
+        for(int i=1;i<151;i++){
+        if (A[i].setor_maquina=="Scanner\n")
+        {
+        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Tipo:%d\n",A[i].categoria);
+        printf("Estado operacional:%c\n",A[i].Estado);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: Sensor\n");
+        for(int i=1;i<151;i++){
+        if (A[i].setor_maquina=="Sensor\n")
+        {
+        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Tipo:%d\n",A[i].categoria);
+        printf("Estado operacional:%c\n",A[i].Estado);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: Esteira\n");
+        for(int i=1;i<151;i++){
+        if (A[i].setor_maquina=="Esteira\n")
+        {
+        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Tipo:%d\n",A[i].categoria);
+        printf("Estado operacional:%c\n",A[i].Estado);
+        }
+        }
+        printf("=======\n");
+        printf("Setor: Braco mecanico\n");
+        for(int i=1;i<151;i++){
+        if (A[i].setor_maquina=="Braco mecanico\n")
+        {
+        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Tipo:%d\n",A[i].categoria);
+        printf("Estado operacional:%c\n",A[i].Estado);
+        }
+        }
+        printf("=======\n");
+}
+
 int main()
 {
     int n1, n2, n3, n4, n5, n6, n7;
@@ -500,6 +622,11 @@ int main()
             printf("\nQuantos equipamentos voce deseja registrar?(1-40): \n");
             scanf("%d", &n2);
             Registrar_Maquinas(maquinas, n2);
+            break;
+        case 5:
+            listar_opr_todos(operadores);
+            listar_opr_setor(operadores);
+            listar_maq_setor(maquinas);
             break;
         }
 
