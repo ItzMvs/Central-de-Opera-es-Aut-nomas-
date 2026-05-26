@@ -799,6 +799,96 @@ for(i=1;i<51;i++)
 }
 }
 
+// CASE 4: 
+
+/*
+1- dentro dessa função de atualização, preciso criar um mini-menu de seleção das seguintes
+opções que ele pode escolher
+
+-vou ter que usar um switch case para cada opção dentro da função atualização
+-vou ter que acessar o vetor de struct e alterar conforme a opção que ele pedir (talvez usando ponteiro)
+
+*/
+
+void Atualização_Sistema(opr A[], Equip B[], int num){
+    int opt1, opt2;
+    int posicao= 0;
+    int Existe = 0;
+    char ID_maquina[3];
+
+    printf("\n------------- OPCOES DE ATUALIZACAO -----------\n");
+    printf("\n-----------------------------------------------\n");
+    printf("1.Alterar Estado Operacional do equipamento \n");
+    printf("2.Atualize a disponibilidade dos Operadores \n");
+    printf("3.Mover equipamentos entre Setores \n");
+    printf("4.Registrar ocorrências \n");
+    printf("5.Desativar Registros \n");
+    printf("6.Sair da selecao \n");
+    printf("\n-----------------------------------------------\n");
+    printf("Selecione uma opcao (1-6): \n");
+    scanf("%d", &opt1);
+    switch(opt){
+    case 1:
+        do
+        {
+            for(int i = 0; i< num; i++){
+                printf("\nInforme o ID do equipamento(1 letra e 2 digitos): \n");
+                fgets(ID_maquina, 3, stdin);
+                x = check_ID_maquina(ID_maquina);
+                if(x == 1){
+                    for (int= 0; i<50; i++){
+                            if(A[i].ID_maquina == ID_maquina){
+                                Existe = 1;
+                                posicao = i;
+                                printf("\n--- Estados Operacionais ---\n");
+                                printf("1.Ativo \n");
+                                printf("2.Inativo \n");
+                                printf("3.Manutencao \n");
+                                printf("4. Sair da selecao \n");
+                                printf("Qual o novo estado operacional deste equipamento?: \n");
+                                scanf("%d", &opt2);
+                                switch(opt2){
+                                case 1:
+                                    printf("O novo estado desse equipamento eh: 'Ativo'\n");
+                                    strcpy(A[pos].Estado, "Ativo");
+                                    break;
+                                case 2:
+                                     printf("O novo estado desse equipamento eh: 'Inativo'\n");
+                                    strcpy(A[pos].Estado, "Inativo");
+                                    break;
+                                case 3:
+                                     printf("O novo estado desse equipamento eh: 'Manutencao'\n");
+                                    strcpy(A[pos].Estado, "Manutencao");
+                                    break;
+                                case 4:
+                                    printf("\nSaindo da selecao...");
+                                    break;
+                                default:
+                                    printf("Erro! Opcao invalida");
+
+                                }
+
+                            }
+                            else
+                            {
+                                printf("\nEsse ID nao existe!\n");
+                            }
+
+                    }
+                }
+                else
+                {
+                    printf("\nFormato de ID invalido...\n");
+                }
+
+        }while(x!=1);
+
+
+
+        }
+    }
+
+
 int main()
 {
     int n1, n2, n3, n4, n5, n6, n7, lista;
