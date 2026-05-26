@@ -471,11 +471,11 @@ void listar_opr_todos(Opr A[]){
     for(int i=1;i<51;i++)
     {
         printf("=======\n");
-        printf("Nome:%c\n",A[i].nome);
+        printf("Nome:%s\n",A[i].nome);
         printf("Id:%d\n",A[i].ID_operador);
-        printf("Setor:%c\n",A[i].setor_operador);
-        printf("Nivel:%c\n",A[i].nivel);
-        printf("Status:%c\n",A[i].status);
+        printf("Setor:%s\n",A[i].setor_operador);
+        printf("Nivel:%s\n",A[i].nivel);
+        printf("Status:%s\n",A[i].status);
         printf("Operacoes feitas:%d\n",A[i].Operacoes_feitas);
         printf("=======\n");
 
@@ -483,114 +483,325 @@ void listar_opr_todos(Opr A[]){
 }
 // listar operadores,id,nome e status por setor (Rever isso com o Grupo)
 void listar_opr_setor(Opr A[]){
+        int opt;
+        do{
+        printf("\n--- LISTA DE SETORES ---\n");
+        printf("---------------------------");
+        printf("\n1.Setor VX28-(Coleta)\n");
+        printf("2.Setor VX29-(Montagem)\n");
+        printf("3.Setor VX30-(Conserto)\n");
+        printf("4.Setor VX31-(Entrega)\n");
+        printf("5.Setor VX32-(Revisao geral)\n");
+        printf("6.Encerrar selecao\n");
+        printf("----------------------------");
+        printf("\n");
+        printf("Seleciona um dos setores acima (1-5): \n");
+        scanf("%d", &opt);
+        switch(opt){
+        case 1:
+        printf("=======\n");
         printf("Setor: VX28\n");
         for(int i=1;i<51;i++){
-        if (A[i].setor_operador=="VX28\n")
+        if (A[i].setor_operador=="VX28")
         {
-        printf("Nome:%c\n",A[i].nome);
+        printf("Nome:%s\n",A[i].nome);
         printf("Id:%d\n",A[i].ID_operador);
-        printf("Status:%c\n",A[i].status);
+        printf("Status:%s\n",A[i].status);
         }
         }
+        printf("=======\n");
+        break;
+        case 2:
         printf("=======\n");
         printf("Setor: VX29\n");
         for(int i=1;i<51;i++){
-        if (A[i].setor_operador=="VX29\n")
+        if (A[i].setor_operador=="VX29")
         {
-        printf("Nome:%c\n",A[i].nome);
+        printf("Nome:%s\n",A[i].nome);
         printf("Id:%d\n",A[i].ID_operador);
-        printf("Status:%c\n",A[i].status);
+        printf("Status:%s\n",A[i].status);
         }
         }
+        printf("=======\n");
+        break;
+        case 3:
         printf("=======\n");
         printf("Setor: VX30\n");
         for(int i=1;i<51;i++){
-        if (A[i].setor_operador=="VX30\n")
+        if (A[i].setor_operador=="VX30")
         {
-        printf("Nome:%c\n",A[i].nome);
+        printf("Nome:%s\n",A[i].nome);
         printf("Id:%d\n",A[i].ID_operador);
-        printf("Status:%c\n",A[i].status);
+        printf("Status:%s\n",A[i].status);
         }
         }
+        printf("=======\n");
+        break;
+        case 4:
         printf("=======\n");
         printf("Setor: VX31\n");
         for(int i=1;i<51;i++){
-        if (A[i].setor_operador=="VX31\n")
+        if (A[i].setor_operador=="VX31")
         {
-        printf("Nome:%c\n",A[i].nome);
+        printf("Nome:%s\n",A[i].nome);
         printf("Id:%d\n",A[i].ID_operador);
-        printf("Status:%c\n",A[i].status);
+        printf("Status:%s\n",A[i].status);
         }
         }
+        printf("=======\n");
+        break;
+        case 5:
         printf("=======\n");
         printf("Setor: VX32\n");
         for(int i=1;i<51;i++){
-        if (A[i].setor_operador=="VX32\n")
+        if (A[i].setor_operador=="VX32")
         {
-        printf("Nome:%c\n",A[i].nome);
+        printf("Nome:%s\n",A[i].nome);
         printf("Id:%d\n",A[i].ID_operador);
-        printf("Status:%c\n",A[i].status);
+        printf("Status:%s\n",A[i].status);
         }
         }
         printf("=======\n");
+        break;
+        }
+
+        }while(opt>0 && opt<6);
 }
 //listar equipamento,id,tipo e estado por setor
-void listar_maq_setor(Equip A[]){
-        printf("Setor: Drone\n");
-        for(int i=1;i<151;i++){
-        if (A[i].setor_maquina=="Drone\n")
+void listar_maq_setor(Equip A[] ){
+        int opt;
+        do
         {
-        printf("Id:%c\n",A[i].ID_maquina);
+        printf("\n--- LISTA DE SETORES ---\n");
+        printf("---------------------------");
+        printf("\n1.Setor VX28-(Coleta)\n");
+        printf("2.Setor VX29-(Montagem)\n");
+        printf("3.Setor VX30-(Conserto)\n");
+        printf("4.Setor VX31-(Entrega)\n");
+        printf("5.Setor VX32-(Revisao geral)\n");
+        printf("6.Encerrar selecao\n");
+        printf("----------------------------");
+        printf("\n");
+        printf("Seleciona um dos setores acima (1-5): \n");
+        scanf("%d", &opt);
+        switch(opt){
+        case 1:
+        printf("=======\n");
+        printf("Setor: VX28\n");
+        for(int i=1;i<151;i++){
+        if (A[i].setor_maquina=="VX28")
+        {
+        printf("Id:%s\n",A[i].ID_maquina);
         printf("Tipo:%d\n",A[i].categoria);
-        printf("Estado operacional:%c\n",A[i].Estado);
+        printf("Estado operacional:%s\n",A[i].Estado);
         }
         }
         printf("=======\n");
-        printf("Setor: Scanner\n");
+        break;
+        case 2:
+        printf("=======\n");
+        printf("Setor: VX29\n");
         for(int i=1;i<151;i++){
-        if (A[i].setor_maquina=="Scanner\n")
+        if (A[i].setor_maquina=="VX29")
         {
-        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Id:%s\n",A[i].ID_maquina);
         printf("Tipo:%d\n",A[i].categoria);
-        printf("Estado operacional:%c\n",A[i].Estado);
+        printf("Estado operacional:%s\n",A[i].Estado);
         }
         }
         printf("=======\n");
-        printf("Setor: Sensor\n");
+        break;
+        case 3:
+        printf("=======\n");
+        printf("Setor: VX30\n");
         for(int i=1;i<151;i++){
-        if (A[i].setor_maquina=="Sensor\n")
+        if (A[i].setor_maquina=="VX30")
         {
-        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Id:%s\n",A[i].ID_maquina);
         printf("Tipo:%d\n",A[i].categoria);
-        printf("Estado operacional:%c\n",A[i].Estado);
+        printf("Estado operacional:%s\n",A[i].Estado);
         }
         }
         printf("=======\n");
-        printf("Setor: Esteira\n");
+        break;
+        case 4:
+        printf("=======\n");
+        printf("Setor: VX31\n");
         for(int i=1;i<151;i++){
-        if (A[i].setor_maquina=="Esteira\n")
+        if (A[i].setor_maquina=="VX31")
         {
-        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Id:%s\n",A[i].ID_maquina);
         printf("Tipo:%d\n",A[i].categoria);
-        printf("Estado operacional:%c\n",A[i].Estado);
+        printf("Estado operacional:%s\n",A[i].Estado);
         }
         }
         printf("=======\n");
-        printf("Setor: Braco mecanico\n");
+        break;
+        case 5:
+        printf("=======\n");
+        printf("Setor: VX32\n");
         for(int i=1;i<151;i++){
-        if (A[i].setor_maquina=="Braco mecanico\n")
+        if (A[i].setor_maquina=="VX32")
         {
-        printf("Id:%c\n",A[i].ID_maquina);
+        printf("Id:%s\n",A[i].ID_maquina);
         printf("Tipo:%d\n",A[i].categoria);
-        printf("Estado operacional:%c\n",A[i].Estado);
+        printf("Estado operacional:%s\n",A[i].Estado);
         }
         }
         printf("=======\n");
+        break;
+        }
+        }while(opt>0 && opt<6);
+}
+
+void listar_maq_op_setor(Opr op[], Equip maq[]){
+int opt;
+        do
+        {
+        printf("\n--- LISTA DE SETORES ---\n");
+        printf("---------------------------");
+        printf("\n1.Setor VX28-(Coleta)\n");
+        printf("2.Setor VX29-(Montagem)\n");
+        printf("3.Setor VX30-(Conserto)\n");
+        printf("4.Setor VX31-(Entrega)\n");
+        printf("5.Setor VX32-(Revisao geral)\n");
+        printf("6.Encerrar selecao\n");
+        printf("----------------------------");
+        printf("\n");
+        printf("Seleciona um dos setores acima (1-5): \n");
+        scanf("%d", &opt);
+        switch(opt){
+        case 1:
+        printf("=======\n");
+        printf("Setor: VX28\n");
+        printf("----Maquina----\n");
+        for(int i=1;i<151;i++){
+        if (maq[i].setor_maquina=="VX28")
+        {
+        printf("Id:%s\n",maq[i].ID_maquina);
+        printf("Tipo:%s\n",maq[i].categoria);
+        }
+        }
+        printf("----Operador----\n");
+        for(int i=1;i<51;i++){
+        if (op[i].setor_operador=="VX28")
+        {
+        printf("Id:%s\n",op[i].ID_operador);
+        printf("Nome:%s\n",op[i].nome);
+        }
+        }
+        printf("=======\n");
+        break;
+        case 2:
+        printf("=======\n");
+        printf("Setor: VX29\n");
+        printf("----Maquina----\n");
+        for(int i=1;i<151;i++){
+        if (maq[i].setor_maquina=="VX29")
+        {
+        printf("Id:%s\n",maq[i].ID_maquina);
+        printf("Tipo:%s\n",maq[i].categoria);
+        }
+        }
+        printf("----Operador----\n");
+        for(int i=1;i<51;i++){
+        if (op[i].setor_operador=="VX29")
+        {
+        printf("Id:%s\n",op[i].ID_operador);
+        printf("Nome:%s\n",op[i].nome);
+        }
+        }
+        printf("=======\n");
+        break;
+        case 3:
+        printf("=======\n");
+        printf("Setor: VX30\n");
+        printf("----Maquina----\n");
+        for(int i=1;i<151;i++){
+        if (maq[i].setor_maquina=="VX30")
+        {
+        printf("Id:%s\n",maq[i].ID_maquina);
+        printf("Tipo:%s\n",maq[i].categoria);
+        }
+        }
+        printf("----Operador----\n");
+        for(int i=1;i<51;i++){
+        if (op[i].setor_operador=="VX30")
+        {
+        printf("Id:%s\n",op[i].ID_operador);
+        printf("Nome:%s\n",op[i].nome);
+        }
+        }
+        printf("=======\n");
+        break;
+        case 4:
+        printf("=======\n");
+        printf("Setor: VX31\n");
+        printf("----Maquina----\n");
+        for(int i=1;i<151;i++){
+        if (maq[i].setor_maquina=="VX31")
+        {
+        printf("Id:%s\n",maq[i].ID_maquina);
+        printf("Tipo:%s\n",maq[i].categoria);
+        }
+        }
+        printf("----Operador----\n");
+        for(int i=1;i<51;i++){
+        if (op[i].setor_operador=="VX31")
+        {
+        printf("Id:%s\n",op[i].ID_operador);
+        printf("Nome:%s\n",op[i].nome);
+        }
+        }
+        printf("=======\n");
+        break;
+        case 5:
+        printf("=======\n");
+        printf("Setor: VX32\n");
+        printf("----Maquina----\n");
+        for(int i=1;i<151;i++){
+        if (maq[i].setor_maquina=="VX32")
+        {
+        printf("Id:%s\n",maq[i].ID_maquina);
+        printf("Tipo:%s\n",maq[i].categoria);
+        }
+        }
+        printf("----Operador----\n");
+        for(int i=1;i<51;i++){
+        if (op[i].setor_operador=="VX32")
+        {
+        printf("Id:%s\n",op[i].ID_operador);
+        printf("Nome:%s\n",op[i].nome);
+        }
+        }
+        printf("=======\n");
+        break;
+        }
+        }while(opt>0 && opt<6);
+}
+
+void listar_op_moperacoes(Opr A[]){
+int maior=-1,i;
+for(i=1;i<51;i++)
+{
+    if(maior<A[i].Operacoes_feitas)
+    {
+        maior=A[i].Operacoes_feitas;
+    }
+}
+printf("O(s) operador(es) com mais operacoes feitas são:\n");
+for(i=1;i<51;i++)
+{
+    if(maior==A[i].Operacoes_feitas)
+    {
+        printf("Nome:%s Operacoes feitas:%d\n");
+    }
+}
 }
 
 int main()
 {
-    int n1, n2, n3, n4, n5, n6, n7;
+    int n1, n2, n3, n4, n5, n6, n7, lista;
     Opr operadores[40];
     Equip maquinas[40];
     int opt;
@@ -624,11 +835,38 @@ int main()
             Registrar_Maquinas(maquinas, n2);
             break;
         case 5:
+        printf("\n--- LISTA DE SETORES ---\n");
+        printf("---------------------------\n");
+        printf("1.Listar todos operadore e suas respectivas informacoes\n");
+        printf("2.Lista ID, nome e status dos operadores de um determinado setor\n");
+        printf("3.Listar ID, tipo e estado operacional das maquinas de um determinado setor\n");
+        printf("4.Listar ID e nome dos operadores e ID e tipo das maquinas de um determinado setor\n");
+        printf("5.Listar os operadores, de cada setor, com o maior numero de operacoes realizadas\n");
+        printf("6.Encerrar selecao\n");
+        printf("----------------------------");
+        printf("\n");
+        printf("Seleciona uma das listas acima (1-5): \n");
+        scanf("%d", &lista);
+        switch(lista){
+        case 1:
             listar_opr_todos(operadores);
+        break;
+        case 2:
             listar_opr_setor(operadores);
+        break;
+        case 3:
             listar_maq_setor(maquinas);
+        break;
+        case 4:
+            listar_maq_op_setor(operadores,maquinas);
+        break;
+        case 5:
+            listar_op_moperacoes(operadores);
+        break;
             break;
         }
+        }
+
 
     }while(opt >3 || opt<1);
     return 0;
