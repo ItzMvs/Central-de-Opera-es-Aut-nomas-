@@ -810,10 +810,11 @@ opções que ele pode escolher
 
 */
 
-void Atualização_Sistema(opr A[], Equip B[], int num){
-    int opt1, opt2;
-    int posicao= 0;
-    int Existe = 0;
+void Atualizacao_Sistema(opr A[], Equip B[], int num){
+    int opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8, opt9;
+    int Existe = 1; 
+    int x, y, z, k, q;
+    int pos= 0;
     char ID_maquina[3];
 
     printf("\n------------- OPCOES DE ATUALIZACAO -----------\n");
@@ -822,12 +823,13 @@ void Atualização_Sistema(opr A[], Equip B[], int num){
     printf("2.Atualize a disponibilidade dos Operadores \n");
     printf("3.Mover equipamentos entre Setores \n");
     printf("4.Registrar ocorrências \n");
-    printf("5.Desativar Registros \n");
-    printf("6.Sair da selecao \n");
+    printf("5.Desativar Registro de operador \n");
+    printf("6.Desativar Registro de Equipamentos \n");
+    printf("7.Sair da selecao \n");
     printf("\n-----------------------------------------------\n");
     printf("Selecione uma opcao (1-6): \n");
     scanf("%d", &opt1);
-    switch(opt){
+    switch(opt1){
     case 1:
         do
         {
@@ -839,7 +841,7 @@ void Atualização_Sistema(opr A[], Equip B[], int num){
                     for (int= 0; i<50; i++){
                             if(A[i].ID_maquina == ID_maquina){
                                 Existe = 1;
-                                posicao = i;
+                                pos = i;
                                 printf("\n--- Estados Operacionais ---\n");
                                 printf("1.Ativo \n");
                                 printf("2.Inativo \n");
@@ -881,17 +883,215 @@ void Atualização_Sistema(opr A[], Equip B[], int num){
                     printf("\nFormato de ID invalido...\n");
                 }
 
-        }while(x!=1);
+          }
+        
+        }while(x!=1 || Existe != 1);
+        break;
+        
+    case 2:
+        printf("\nInforme o ID do operador: \n");
+        scanf("%d", &opt3);
+        y = Check_ID_Op(opt3);
+        if(y==4){
+             for (int i = 0; i<50; i++){
+                            if(A[i].ID_operador == opt3){
+                                Existe = 1;
+                                pos = i;
+                                printf("\n--- STATUS DE DISPONIBILIDADE ---\n");
+                                printf("1. Ativo \n");
+                                printf("2.Ocupado \n");
+                                printf("3. Inativo \n");
+                                printf("4. Bloqueado \n");
+                                printf("5. Sair da selecao \n");
+                                printf("Qual o novo estado operacional deste equipamento?: \n");
+                                scanf("%d", &opt4);
+                                switch(opt4){
+                                case 1:
+                                    printf("O novo estado desse operador eh: 'Ativo'\n");
+                                    strcpy(A[pos].status, "Ativo");
+                                    break;
+                                case 2:
+                                     printf("O novo estado desse operador eh: 'Ocupado'\n");
+                                    strcpy(A[pos].status, "Ocupado");
+                                    break;
+                                case 3:
+                                     printf("O novo estado desse operador eh: 'Inativo'\n");
+                                    strcpy(A[pos].status, "Inativo");
+                                    break;
+                                case 4:
+                                    printf("O novo estado desse operador eh: 'Bloqueado'\n");
+                                    strcpy(A[pos].status,"Bloqueado");
+                                case 5:
+                                    printf("\nSaindo da selecao...");
+                                    break;
+                                default:
+                                    printf("Erro! Opcao invalida");
 
+                                }
 
+                            }
+                            else
+                            {
+                                printf("\nEsse ID nao existe!\n");
+                            }
 
+                    }
+                }
+                else
+                {
+                    printf("\nFormato de ID invalido...\n");
+                }
+
+          }
+        
+        }while(y!=4 || Existe !=1);
+        break;
+        
+    case 3:
+        do
+        {
+            for(int i = 0; i< num; i++){
+                printf("\nInforme o ID do equipamento(1 letra e 2 digitos): \n");
+                fgets(opt5, 3, stdin);
+                z = check_ID_maquina(opt5);
+                if(x == 1){
+                    for (int i= 0; i<50; i++){
+                            if(A[i].ID_maquina == opt5){
+                                Existe = 1;
+                                pos = i;
+                                printf("\n--- LISTA DE SETORES ---\n");
+                                printf("\n1. Setor VX28-(Coleta)\n");
+                                printf("2. Setor VX29-(Montagem) \n");
+                                printf("3. Setor VX30-(Conserto) \n");
+                                printf("4. Setor VX31-(Entrega) \n");
+                                printf("5. Setor VX32-(Revisao geral)\n")
+                                printf("6. Sair da selecao \n");
+                                printf("Qual o novo setor deste equipamento?: \n");
+                                scanf("%d", &opt6);
+                                switch(opt6){
+                                case 1:
+                                    printf("O novo setor desse equipamento eh: 'VX28'\n");
+                                    strcpy(A[pos].setor, "VX28");
+                                    break;
+                                case 2:
+                                     printf("O novo estado desse equipamento eh: 'VX29'\n");
+                                    strcpy(A[pos].setor, "VX29");
+                                    break;
+                                case 3:
+                                     printf("O novo estado desse equipamento eh: 'VX30'\n");
+                                    strcpy(A[pos].setor, "VX30");
+                                    break;
+                                case 4:
+                                    printf("O novo setor desse equipamento eh: 'VX31'\n");
+                                    strcpy(A[pos].setor, "VX31");
+                                case 5:
+                                    printf("O novo setor desse equipamento eh: 'VX32'\n");
+                                    strcpy(A[pos].setor, "VX32");
+                                case 6:
+                                    printf("\nSaindo da selecao...");
+                                    break;
+                                default:
+                                    printf("Erro! Opcao invalida");
+
+                                }
+
+                            }
+                            else
+                            {
+                                printf("\nEsse ID nao existe!\n");
+                            }
+
+                    }
+                }
+                else
+                {
+                    printf("\nFormato de ID invalido...\n");
+                }
+
+           }
+        
+        }while(x!=1 || Existe !=1);
+        break;
+    
+    case 4:
+        do
+        {
+            printf("Informe o ID do operador(4 digitos): \n");
+        scanf("%d", opt7);
+        k = Check_ID_Op(opt7);
+        if(Check_ID_Op(opt7) == 4){
+            for (int i=0; i<50; i++){
+                if(A[i].ID_operador == opt7){
+                    Existe = 1;
+                    pos = i;
+                    printf("\nInforme o novo numero de operacoes desse operador: \n");
+                    scanf("%d", &opt8);
+                    
+                    printf("\nO novo numero de operacoes desse operador eh: %d \n", opt8);
+                    
+                    
+                }
+                else{
+                    printf("\nEsse ID nao existe!\n");
+                    
+                }
+            }
         }
+        else{
+            printf("\nFormato de ID invalido \n");
+        }
+        
+            
+        }while(k!=4 || Existe!=1 );
+        break;
+    
+    case 5:
+    Existe = 0;
+    
+    printf("Informe o ID do operador que perdera o registro (4 digitos): \n");
+    scanf("%d", &opt9);
+    q = Check_ID_Op(opt9);
+    
+    if (q == 4) {
+        for (int i = 0; i < 50; i++) {
+            if (A[i].ID_operador == opt9) {
+                Existe = 1;
+                pos = i;
+                break;
+            }
+        }
+
+        if (Existe == 1) {
+            // Desloca todos os elementos uma posição para a esquerda
+            for (int i = pos; i < 49; i++) {
+                A[i] = A[i + 1];
+            }
+
+            // Zera o último elemento manualmente
+            A[49].ID_operador = 0;
+            strcpy(A[49].nome, "");
+            strcpy(A[49].setor_operador, "");
+            strcpy(A[49].nivel, "");
+            strcpy(A[49].status, "");
+            A[49].Operacoes_feitas = 0;
+
+            printf("\nRegistro do operador ID %d removido com sucesso!\n", opt9);
+        } else {
+            printf("\nOperador com ID %d nao encontrado.\n", opt9);
+        }
+
+    } else {
+        printf("\nFormato de ID invalido! Use 4 digitos.\n");
     }
+
+    Existe = 0;
+    break;
 
 
 int main()
 {
-    int n1, n2, n3, n4, n5, n6, n7, lista;
+    int lista;
+    int cadastros;
     Opr operadores[40];
     Equip maquinas[40];
     int opt;
@@ -915,15 +1115,21 @@ int main()
         case 1:
 
             printf("\nQuantos Operadores voce deseja cadastrar?(1-40): \n");
-            scanf("%d", &n1);
-            Registrar_Operador(operadores, n1);
+            scanf("%d", &cadastros);
+            Registrar_Operador(operadores, cadastros);
             break;
+            
         case 2:
 
             printf("\nQuantos equipamentos voce deseja registrar?(1-40): \n");
-            scanf("%d", &n2);
-            Registrar_Maquinas(maquinas, n2);
+            scanf("%d", &cadastros);
+            Registrar_Maquinas(maquinas, cadastros);
             break;
+            
+        case 4:
+            printf("\nQuantas atualizacoes voce deseja fazer?: \n");
+            
+            
         case 5:
         printf("\n--- LISTA DE SETORES ---\n");
         printf("---------------------------\n");
